@@ -28,7 +28,7 @@ def process(inputs: typing.List[Input]):
                 timestamp_string = inp.current_value
             if inp.name == "message_id" and inp.current_value is not None:
                 message_id = inp.current_value
-    timestamp_then = datetime.strptime(timestamp_string, '%Y-%m-%d %H:%M:%S.%f').replace(tzinfo=timezone.utc).timestamp()
+    timestamp_then = datetime.strptime(timestamp_string, '%Y-%m-%dT%H:%M:%S.%fZ').replace(tzinfo=timezone.utc).timestamp()
     return Output(True, {"message_id": message_id, "time_diff": timestamp_now - timestamp_then})
 
 
